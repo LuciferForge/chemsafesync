@@ -47,6 +47,10 @@ class DatabaseManager:
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             """)
+            try:
+                cursor.execute("ALTER TABLE clients ADD COLUMN password_hash TEXT")
+            except Exception:
+                pass
 
             # Chemical Inventory SKUs Table
             cursor.execute("""

@@ -128,30 +128,58 @@ DASHBOARD_HTML = """
     </div>
   </div>
 
-  <!-- Stripe / Polar Subscription Checkout Modal -->
-  <div id="checkoutModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:999;display:none;justify-content:center;align-items:center;">
+  <!-- Direct In-App Subscription & Trial Activation Modal -->
+  <div id="checkoutModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:999;justify-content:center;align-items:center;">
     <div style="background:var(--card);border:1px solid var(--accent-green);padding:30px;border-radius:16px;max-width:500px;width:90%;box-shadow:0 0 30px rgba(0,255,102,0.2);position:relative;">
       <h2 style="color:var(--accent-green);font-size:22px;margin-bottom:10px;">🧪 ChemSafeSync Enterprise Pro</h2>
-      <p style="font-size:14px;color:var(--muted);margin-bottom:20px;">Automated OSHA SDS revision monitoring for 500+ SKUs, vendor API sync, and monthly PDF compliance audits.</p>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Automated GHS 16-section SDS monitoring, vendor sync, and monthly PDF compliance audits for 500+ SKUs.</p>
       
-      <div style="background:rgba(255,255,255,0.03);padding:16px;border-radius:10px;margin-bottom:20px;border:1px solid var(--border);">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-          <span style="font-weight:700;font-size:15px;">Monthly Plan</span>
+      <div style="background:rgba(255,255,255,0.03);padding:14px;border-radius:10px;margin-bottom:16px;border:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <span style="font-weight:700;font-size:15px;">Enterprise Subscription</span>
           <span style="font-weight:800;font-size:20px;color:var(--accent-green);">$299 / mo</span>
         </div>
-        <div style="font-size:12px;color:var(--accent-blue);">Includes 14-Day Full Access Free Trial &bull; Cancel Anytime</div>
+        <div style="font-size:12px;color:var(--accent-blue);">🎁 Includes 14-Day Full Access Free Trial &bull; No upfront charge</div>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <a href="https://buy.stripe.com/test_chemsafesync_299" target="_blank" onclick="alert('✅ Redirecting to Secure Stripe Checkout (14-Day Free Trial)!')" class="btn btn-primary" style="justify-content:center;padding:14px;font-size:15px;text-decoration:none;">💳 Pay via Stripe (Credit / Debit Card)</a>
-        <button class="btn btn-secondary" onclick="closeCheckoutModal()" style="justify-content:center;padding:12px;">Cancel</button>
-      </div>
+      <form id="subscribeForm" onsubmit="handleDirectSubscribe(event)">
+        <div style="margin-bottom:12px;">
+          <label style="font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:4px;">WORK EMAIL ADDRESS</label>
+          <input type="email" id="subEmail" required placeholder="safety.director@apexchemical.com" style="width:100%;padding:10px;border-radius:8px;background:#090C15;border:1px solid var(--border);color:#fff;font-size:13px;">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:4px;">COMPANY / FACILITY NAME</label>
+          <input type="text" id="subCompany" required placeholder="Apex Chemical Logistics Corp" style="width:100%;padding:10px;border-radius:8px;background:#090C15;border:1px solid var(--border);color:#fff;font-size:13px;">
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;padding:12px;font-size:14px;">⚡ Start 14-Day Trial</button>
+          <button type="button" class="btn btn-secondary" onclick="closeCheckoutModal()" style="padding:12px;">Cancel</button>
+        </div>
+      </form>
     </div>
   </div>
 
   <script>
     function openCheckoutModal() { document.getElementById('checkoutModal').style.display = 'flex'; }
     function closeCheckoutModal() { document.getElementById('checkoutModal').style.display = 'none'; }
+    
+    function handleDirectSubscribe(e) {
+      e.preventDefault();
+      const email = document.getElementById('subEmail').value;
+      const company = document.getElementById('subCompany').value;
+      
+      fetch('/api/subscribe_direct', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, company: company })
+      })
+      .then(r => r.json())
+      .then(data => {
+        alert('🎉 14-DAY FREE TRIAL ACTIVATED!\nWelcome ' + company + '!\nYour Enterprise Pro dashboard is unlocked ($299/mo after 14 days).');
+        closeCheckoutModal();
+        location.reload();
+      });
+    }
   </script>
 
   <table>
@@ -294,15 +322,19 @@ def api_upload_csv():
     audit = db.record_audit(1)
     return jsonify(audit)
 
-@app.route("/report")
-def download_report():
-    client = db.get_client(1)
-    inventory = db.get_inventory(1)
-    audit = db.record_audit(1)
-    from compliance_report_generator import ComplianceReportGenerator
-    rep_gen = ComplianceReportGenerator()
-    path = rep_gen.generate_html_report(client, inventory, audit)
-    return send_file(path)
+@app.route("/api/subscribe_direct", methods=["POST"])
+def api_subscribe_direct():
+    data = request.json or {}
+    email = data.get("email", "client@enterprise.com")
+    company = data.get("company", "Enterprise Chemical Client")
+    client_id = db.register_client("Safety Director", company, email, "TrialPass123!", "Enterprise")
+    logger.info(f"🎉 New Direct Subscription Activated: {company} ({email}) - Client ID {client_id}")
+    return jsonify({
+        "status": "SUCCESS",
+        "client_id": client_id,
+        "plan_tier": "Enterprise",
+        "message": "14-Day Free Trial Activated"
+    })
 
 if __name__ == "__main__":
     logger.info("⚡ Launching ChemSafeSync Web Dashboard on port 8095...")
