@@ -113,10 +113,20 @@ DASHBOARD_HTML = """
 
   <div id="toastBanner" style="display:none;background:rgba(0,255,102,0.15);border:1px solid var(--accent-green);color:var(--accent-green);padding:12px 18px;border-radius:10px;margin-bottom:20px;font-weight:700;font-size:13px;"></div>
 
+  <div style="background:linear-gradient(135deg, rgba(0,255,102,0.1), rgba(0,229,255,0.05));border:1px solid var(--accent-green);padding:20px;border-radius:14px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;">
+    <div>
+      <h3 style="color:var(--accent-green);font-size:18px;font-weight:800;margin-bottom:4px;">🧪 ChemSafeSync Enterprise Pro Tier</h3>
+      <p style="font-size:13px;color:var(--muted);">Automated GHS 16-section SDS revision monitoring & vendor sync for 500+ SKUs.</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span style="font-size:22px;font-weight:800;color:#fff;">$299 <span style="font-size:13px;color:var(--muted);">/ mo</span></span>
+      <a href="/checkout" class="btn btn-primary" style="text-decoration:none;background:linear-gradient(135deg, #00FF66, #00B347);color:#000;font-size:14px;padding:12px 22px;box-shadow:0 0 15px rgba(0,255,102,0.4);">💳 Start 14-Day Free Trial</a>
+    </div>
+  </div>
+
   <div class="action-bar">
     <h3 style="font-size: 18px; font-weight: 700;">Chemical Inventory & Safety Data Sheets (SDSs)</h3>
     <div style="display:flex; gap:10px; flex-wrap:wrap;">
-      <button class="btn btn-primary" onclick="openCheckoutModal()" style="background:linear-gradient(135deg, #00FF66, #00B347);color:#000;box-shadow:0 0 15px rgba(0,255,102,0.4);">💳 Start 14-Day Free Trial ($299/mo)</button>
       <label class="btn btn-secondary" style="cursor:pointer;">
         📤 Upload CSV Inventory
         <input type="file" id="csvFileInput" accept=".csv" style="display:none;" onchange="uploadCSV(this)">
@@ -128,56 +138,20 @@ DASHBOARD_HTML = """
     </div>
   </div>
 
-  <!-- Direct In-App Subscription & Trial Activation Modal -->
-  <div id="checkoutModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:999;justify-content:center;align-items:center;">
-    <div style="background:var(--card);border:1px solid var(--accent-green);padding:30px;border-radius:16px;max-width:500px;width:90%;box-shadow:0 0 30px rgba(0,255,102,0.2);position:relative;">
-      <h2 style="color:var(--accent-green);font-size:22px;margin-bottom:10px;">🧪 ChemSafeSync Enterprise Pro</h2>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Automated GHS 16-section SDS monitoring, vendor sync, and monthly PDF compliance audits for 500+ SKUs.</p>
-      
-      <div style="background:rgba(255,255,255,0.03);padding:14px;border-radius:10px;margin-bottom:16px;border:1px solid var(--border);">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-          <span style="font-weight:700;font-size:15px;">Enterprise Subscription</span>
-          <span style="font-weight:800;font-size:20px;color:var(--accent-green);">$299 / mo</span>
-        </div>
-        <div style="font-size:12px;color:var(--accent-blue);">🎁 Includes 14-Day Full Access Free Trial &bull; No upfront charge</div>
-      </div>
-
-      <form id="subscribeForm" onsubmit="handleDirectSubscribe(event)">
-        <div style="margin-bottom:12px;">
-          <label style="font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:4px;">WORK EMAIL ADDRESS</label>
-          <input type="email" id="subEmail" required placeholder="safety.director@apexchemical.com" style="width:100%;padding:10px;border-radius:8px;background:#090C15;border:1px solid var(--border);color:#fff;font-size:13px;">
-        </div>
-        <div style="margin-bottom:16px;">
-          <label style="font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:4px;">COMPANY / FACILITY NAME</label>
-          <input type="text" id="subCompany" required placeholder="Apex Chemical Logistics Corp" style="width:100%;padding:10px;border-radius:8px;background:#090C15;border:1px solid var(--border);color:#fff;font-size:13px;">
-        </div>
-        <div style="display:flex;gap:10px;">
-          <button type="submit" class="btn btn-primary" style="flex:1;justify-content:center;padding:12px;font-size:14px;">⚡ Start 14-Day Trial</button>
-          <button type="button" class="btn btn-secondary" onclick="closeCheckoutModal()" style="padding:12px;">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <script>
-    function openCheckoutModal() { document.getElementById('checkoutModal').style.display = 'flex'; }
-    function closeCheckoutModal() { document.getElementById('checkoutModal').style.display = 'none'; }
-    
-    function handleDirectSubscribe(e) {
-      e.preventDefault();
-      const email = document.getElementById('subEmail').value;
-      const company = document.getElementById('subCompany').value;
+    function activateTrialDirect() {
+      const email = prompt("Enter your Work Email Address to activate your 14-Day Enterprise Trial:", "safety.director@apexchemical.com");
+      if(!email) return;
       
       fetch('/api/subscribe_direct', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, company: company })
+        body: JSON.stringify({ email: email, company: "Apex Industrial Chemical Corp" })
       })
       .then(r => r.json())
       .then(data => {
-        alert('🎉 14-DAY FREE TRIAL ACTIVATED!\nWelcome ' + company + '!\nYour Enterprise Pro dashboard is unlocked ($299/mo after 14 days).');
-        closeCheckoutModal();
-        location.reload();
+        alert('🎉 14-DAY ENTERPRISE FREE TRIAL ACTIVATED!\nWelcome ' + email + '!\nYour Enterprise Pro dashboard is unlocked ($299/mo after 14 days).');
+        window.location.href = '/report';
       });
     }
   </script>
@@ -322,19 +296,73 @@ def api_upload_csv():
     audit = db.record_audit(1)
     return jsonify(audit)
 
-@app.route("/api/subscribe_direct", methods=["POST"])
-def api_subscribe_direct():
-    data = request.json or {}
-    email = data.get("email", "client@enterprise.com")
-    company = data.get("company", "Enterprise Chemical Client")
-    client_id = db.register_client("Safety Director", company, email, "TrialPass123!", "Enterprise")
-    logger.info(f"🎉 New Direct Subscription Activated: {company} ({email}) - Client ID {client_id}")
-    return jsonify({
-        "status": "SUCCESS",
-        "client_id": client_id,
-        "plan_tier": "Enterprise",
-        "message": "14-Day Free Trial Activated"
-    })
+CHECKOUT_HTML = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🧪 ChemSafeSync | Start 14-Day Enterprise Trial</title>
+  <style>
+    body { background: #090C15; color: #F0F4F8; font-family: system-ui, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+    .card { background: #111625; border: 1px solid #00FF66; padding: 36px; border-radius: 16px; max-width: 480px; width: 90%; box-shadow: 0 0 30px rgba(0,255,102,0.2); }
+    h2 { color: #00FF66; font-size: 24px; margin-bottom: 8px; }
+    p { color: #8E9BAE; font-size: 13px; margin-bottom: 20px; line-height: 1.5; }
+    .price-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 16px; border-radius: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    input { width: 100%; padding: 12px; border-radius: 8px; background: #090C15; border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 14px; margin-bottom: 14px; box-sizing: border-box; }
+    .btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #00FF66, #00B347); color: #000; border: none; border-radius: 10px; font-weight: 800; font-size: 15px; cursor: pointer; }
+    .btn:hover { opacity: 0.9; }
+    .back-link { display: block; text-align: center; margin-top: 16px; color: #8E9BAE; text-decoration: none; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🧪 ChemSafeSync Enterprise</h2>
+    <p>Automated GHS 16-section SDS revision monitoring, vendor sync, and monthly PDF compliance audits for 500+ SKUs.</p>
+    
+    <div class="price-box">
+      <span style="font-weight:700;">Enterprise Plan</span>
+      <span style="font-weight:800;font-size:22px;color:#00FF66;">$299 / mo</span>
+    </div>
+
+    <form method="POST" action="/checkout">
+      <label style="font-size:11px;color:#8E9BAE;font-weight:700;display:block;margin-bottom:6px;">WORK EMAIL ADDRESS</label>
+      <input type="email" name="email" required placeholder="safety.director@apexchemical.com">
+      
+      <label style="font-size:11px;color:#8E9BAE;font-weight:700;display:block;margin-bottom:6px;">COMPANY / FACILITY NAME</label>
+      <input type="text" name="company" required placeholder="Apex Chemical Logistics Corp">
+      
+      <button type="submit" class="btn">⚡ Activate 14-Day Free Trial ($299/mo)</button>
+    </form>
+    <a href="/" class="back-link">&larr; Return to Dashboard</a>
+  </div>
+</body>
+</html>
+"""
+
+@app.route("/checkout", methods=["GET", "POST"])
+def checkout():
+    if request.method == "POST":
+        email = request.form.get("email", "client@apexchemical.com")
+        company = request.form.get("company", "Apex Chemical Logistics Corp")
+        client_id = db.register_client("Safety Director", company, email, "TrialPass123!", "Enterprise")
+        logger.info(f"🎉 14-Day Enterprise Trial Activated for {company} ({email})")
+        return f"""
+        <script>
+          alert('🎉 14-DAY ENTERPRISE FREE TRIAL ACTIVATED!\\n\\nWelcome {company}!\\nYour Enterprise Pro dashboard is unlocked.');
+          window.location.href = '/?subscribed=true';
+        </script>
+        """
+    return render_template_string(CHECKOUT_HTML)
+
+@app.route("/report")
+def download_report():
+    client = db.get_client(1)
+    inventory = db.get_inventory(1)
+    audit = db.record_audit(1)
+    from compliance_report_generator import ComplianceReportGenerator
+    rep_gen = ComplianceReportGenerator()
+    path = rep_gen.generate_html_report(client, inventory, audit)
+    return send_file(path)
 
 if __name__ == "__main__":
     logger.info("⚡ Launching ChemSafeSync Web Dashboard on port 8095...")

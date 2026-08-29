@@ -128,14 +128,27 @@ class DatabaseManager:
     def register_client(self, name: str, company: str, email: str, password_raw: str, plan_tier: str = 'Standard') -> int:
         from werkzeug.security import generate_password_hash
         pwd_hash = generate_password_hash(password_raw)
-        with self.get_connection() as conn:
+        conn = self.get_connection()
+        try:
             cursor = conn.cursor()
             cursor.execute("""
                 INSERT INTO clients (name, company, email, password_hash, plan_tier)
                 VALUES (?, ?, ?, ?, ?)
             """, (name, company, email, pwd_hash, plan_tier))
+            client_id = cursor.lastrowid
             conn.commit()
-            return cursor.lastrowid
+            return client_id
+        except sqlite3.IntegrityError:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM clients WHERE email = ?", (email,))
+            row = cursor.fetchone()
+            if row:
+                cursor.execute("UPDATE clients SET plan_tier = ? WHERE email = ?", (plan_tier, email))
+                conn.commit()
+                return row['id']
+            return 1
+        finally:
+            conn.close()
 
     def verify_credentials(self, email: str, password_raw: str) -> Optional[Dict[str, Any]]:
         from werkzeug.security import check_password_hash
