@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OSHA SDS Compliance Audit Report | Apex Industrial Chemical Corp</title>
+    <style>
+        :root {
+            --bg: #090C15;
+            --card-bg: #111625;
+            --text: #F0F4F8;
+            --muted: #8E9BAE;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent-green: #00FF66;
+            --accent-red: #FF3366;
+            --accent-yellow: #FFCC00;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 30px;
+            line-height: 1.5;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .brand { font-size: 24px; font-weight: 800; color: var(--accent-green); }
+        .meta-info { font-size: 13px; color: var(--muted); text-align: right; }
+        .score-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .score-val { font-size: 42px; font-weight: 900; color: #FF3366; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+        .stat-box { background: var(--card-bg); border: 1px solid var(--border); padding: 16px; border-radius: 10px; text-align: center; }
+        .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; }
+        .stat-num { font-size: 22px; font-weight: 800; margin-top: 5px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        th, td { padding: 12px 16px; text-align: left; font-size: 13px; border-bottom: 1px solid var(--border); }
+        th { background: rgba(255, 255, 255, 0.05); color: var(--muted); font-weight: 700; text-transform: uppercase; font-size: 11px; }
+        .badge { padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .badge-verified { background: rgba(0, 255, 102, 0.15); color: var(--accent-green); border: 1px solid rgba(0, 255, 102, 0.3); }
+        .badge-outdated { background: rgba(255, 51, 102, 0.15); color: var(--accent-red); border: 1px solid rgba(255, 51, 102, 0.3); }
+        .badge-missing { background: rgba(255, 204, 0, 0.15); color: var(--accent-yellow); border: 1px solid rgba(255, 204, 0, 0.3); }
+        .footer { margin-top: 40px; font-size: 12px; color: var(--muted); text-align: center; border-top: 1px solid var(--border); padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <div class="brand">🧪 ChemSafeSync</div>
+            <div style="font-size:14px;color:var(--muted);margin-top:4px;">OSHA HCS 2012 / GHS Safety Data Sheet Audit Report</div>
+        </div>
+        <div class="meta-info">
+            <div><strong>Company:</strong> Apex Industrial Chemical Corp</div>
+            <div><strong>Safety Director:</strong> Safety Director</div>
+            <div><strong>Generated:</strong> August 27, 2026 - 03:07 UTC</div>
+        </div>
+    </div>
+
+    <div class="score-card">
+        <div>
+            <h2 style="margin:0;font-size:20px;">OSHA Compliance Score</h2>
+            <div style="color:var(--muted);font-size:13px;margin-top:4px;">Automated 16-Section Safety Data Sheet Verification</div>
+        </div>
+        <div class="score-val">33.3%</div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-label">Total SKUs Ingested</div>
+            <div class="stat-num">15</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Verified Up-To-Date</div>
+            <div class="stat-num" style="color:var(--accent-green);">5</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Outdated Revisions</div>
+            <div class="stat-num" style="color:var(--accent-red);">10</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Missing / Pending</div>
+            <div class="stat-num" style="color:var(--accent-yellow);">0</div>
+        </div>
+    </div>
+
+    <h3 style="margin-bottom:15px;">Detailed Chemical SKU Inventory Audit</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>SKU Code</th>
+                <th>Product Chemical Name</th>
+                <th>CAS Registry No.</th>
+                <th>Supplier Vendor</th>
+                <th>Revision Date</th>
+                <th>OSHA Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td><strong>SKU-211</strong></td>
+                <td>Acetone Technical Grade</td>
+                <td><code>67-64-1</code></td>
+                <td>Sigma-Aldrich</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-verified">VERIFIED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-215</strong></td>
+                <td>Ethyl Acetate 99.8%</td>
+                <td><code>141-78-6</code></td>
+                <td>Fisher Scientific</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-verified">VERIFIED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-212</strong></td>
+                <td>Isopropyl Alcohol 99%</td>
+                <td><code>67-63-0</code></td>
+                <td>Fisher Scientific</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-verified">VERIFIED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-214</strong></td>
+                <td>Methanol Anhydrous</td>
+                <td><code>67-56-1</code></td>
+                <td>Sigma-Aldrich</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-verified">VERIFIED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-213</strong></td>
+                <td>Sodium Hydroxide Pellets</td>
+                <td><code>1310-73-2</code></td>
+                <td>Dow Chemical</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-verified">VERIFIED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-207</strong></td>
+                <td>Acrylonitrile Monomer</td>
+                <td><code>107-13-1</code></td>
+                <td>BASF</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-208</strong></td>
+                <td>Arsenic Trioxide Powder</td>
+                <td><code>1327-53-3</code></td>
+                <td>Fisher Scientific</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-201</strong></td>
+                <td>Benzene Industrial Solvent</td>
+                <td><code>71-43-2</code></td>
+                <td>Sigma-Aldrich</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-209</strong></td>
+                <td>Cadmium Chloride</td>
+                <td><code>10108-64-2</code></td>
+                <td>McMaster-Carr</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-202</strong></td>
+                <td>Chloroform HPLC Grade</td>
+                <td><code>67-66-3</code></td>
+                <td>Fisher Scientific</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-203</strong></td>
+                <td>Ethylene Oxide Gas</td>
+                <td><code>75-21-8</code></td>
+                <td>McMaster-Carr</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-204</strong></td>
+                <td>Formaldehyde 37% Solution</td>
+                <td><code>50-00-0</code></td>
+                <td>Dow Chemical</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-205</strong></td>
+                <td>Hydrofluoric Acid 48%</td>
+                <td><code>7664-39-3</code></td>
+                <td>DuPont</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-210</strong></td>
+                <td>Lead Chromate Pigment</td>
+                <td><code>7758-97-6</code></td>
+                <td>Dow Chemical</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+
+            <tr>
+                <td><strong>SKU-206</strong></td>
+                <td>Mercury Metal Reagent</td>
+                <td><code>7439-97-6</code></td>
+                <td>Sigma-Aldrich</td>
+                <td>2024-03-15</td>
+                <td><span class="badge badge-outdated">OUTDATED</span></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <div class="footer">
+        ChemSafeSync Automated Compliance Platform &middot; Verified against OSHA 29 CFR 1910.1200 Standards &middot; Confidential
+    </div>
+</body>
+</html>

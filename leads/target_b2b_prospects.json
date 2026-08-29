@@ -1,0 +1,62 @@
+[
+  {
+    "company_name": "Apex Industrial Chemical Corp",
+    "niche": "Industrial Solvents & Acids Distributor",
+    "location": "Houston, TX",
+    "website": "https://apexchemical.com",
+    "contact_name": "Marcus Vance",
+    "contact_title": "Director of Safety & EHS Compliance",
+    "email": "compliance@apexchemical.com",
+    "sku_count_estimate": 450,
+    "pre_audit_finding": "3 Outdated SDS PDFs (2021 Revisions) detected on public portal",
+    "outreach_hook": "OSHA Audit Alert: 3 outdated SDS sheets identified on your portal."
+  },
+  {
+    "company_name": "Vanguard Chemical Supply LLC",
+    "niche": "Specialty Chemical & Janitorial Supplier",
+    "location": "Chicago, IL",
+    "website": "https://vanguardchem.com",
+    "contact_name": "Elena Rostova",
+    "contact_title": "VP of Operations & Compliance",
+    "email": "elena.r@vanguardchem.com",
+    "sku_count_estimate": 1200,
+    "pre_audit_finding": "Missing GHS Section 15 regulatory details on 7 product sheets",
+    "outreach_hook": "Automate your 1,200 SKU SDS revisions before your next OSHA review."
+  },
+  {
+    "company_name": "TriState Solvents & Coatings Inc",
+    "niche": "Paints, Resins & Bulk Solvent Wholesale",
+    "location": "Philadelphia, PA",
+    "website": "https://tristatesolvents.com",
+    "contact_name": "David Thorne",
+    "contact_title": "EHS Safety Manager",
+    "email": "dthorne@tristatesolvents.com",
+    "sku_count_estimate": 850,
+    "pre_audit_finding": "5 Broken SDS download links on customer resource center",
+    "outreach_hook": "Fix 5 broken SDS download links automatically via ChemSafeSync."
+  },
+  {
+    "company_name": "Midwest Chemical Logistics",
+    "niche": "Agrichemical & Fertilizer Distributor",
+    "location": "Des Moines, IA",
+    "website": "https://midwestchemlogistics.com",
+    "contact_name": "Sarah Jenkins",
+    "contact_title": "Head of Regulatory Affairs",
+    "email": "s.jenkins@midwestchemlogistics.com",
+    "sku_count_estimate": 320,
+    "pre_audit_finding": "2 Expired SDS sheets (2019 Revisions) for ammonium compounds",
+    "outreach_hook": "Automated OSHA SDS revision monitoring for agricultural chemicals."
+  },
+  {
+    "company_name": "Pacific Coast Lab Supplies",
+    "niche": "Laboratory Reagents & High-Purity Acids",
+    "location": "San Diego, CA",
+    "website": "https://pacificlabsupplies.com",
+    "contact_name": "Robert Chen",
+    "contact_title": "Operations & Quality Assurance Lead",
+    "email": "r.chen@pacificlabsupplies.com",
+    "sku_count_estimate": 2100,
+    "pre_audit_finding": "Missing French/English bilingual SDS files for Canadian exports",
+    "outreach_hook": "Automated GHS bilingual SDS compliance engine for lab suppliers."
+  }
+]

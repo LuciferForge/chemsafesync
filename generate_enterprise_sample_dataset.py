@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+"""
+ChemSafeSync — Enterprise Chemical Inventory Dataset Generator & Bulk Test Pipeline
+Generates a realistic 50-SKU chemical inventory CSV and executes a full async audit benchmark.
+"""
+
+import os
+import sys
+import csv
+import json
+import time
+import logging
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).parent))
+from database_manager import DatabaseManager
+from async_orchestrator import AsyncSDSComplianceOrchestrator
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger("EnterpriseDatasetTest")
+
+CSV_PATH = Path("/Users/apple/Documents/products/chemsafesync/enterprise_chemical_inventory_50.csv")
+
+REALISTIC_CHEMICALS = [
+    ("SKU-101", "Acetone Technical Grade", "67-64-1", "Sigma-Aldrich", "ACT-01", "2024-01-15", "VERIFIED"),
+    ("SKU-102", "Isopropyl Alcohol 99%", "67-63-0", "Fisher Scientific", "IPA-99", "2024-02-20", "VERIFIED"),
+    ("SKU-103", "Sulfuric Acid 98%", "7664-93-9", "McMaster-Carr", "SULF-98", "2021-05-10", "OUTDATED"),
+    ("SKU-104", "Sodium Hydroxide Pellets", "1310-73-2", "Dow Chemical", "NaOH-P", "2024-03-01", "VERIFIED"),
+    ("SKU-105", "Toluene Anhydrous 99.8%", "108-88-3", "Sigma-Aldrich", "TOL-99", "2020-08-14", "OUTDATED"),
+    ("SKU-106", "Hydrochloric Acid 37%", "7647-01-0", "Fisher Scientific", "HCL-37", "2023-11-12", "VERIFIED"),
+    ("SKU-107", "Methanol HPLC Grade", "67-56-1", "Sigma-Aldrich", "METH-HPLC", "2024-02-05", "VERIFIED"),
+    ("SKU-108", "Nitric Acid 70%", "7697-37-2", "McMaster-Carr", "NITR-70", "2019-04-18", "OUTDATED"),
+    ("SKU-109", "Tetrahydrofuran (THF)", "109-99-9", "DuPont", "THF-100", "2024-01-30", "VERIFIED"),
+    ("SKU-110", "Dichloromethane (DCM)", "75-09-2", "Dow Chemical", "DCM-99", "2023-12-01", "VERIFIED"),
+    ("SKU-111", "Ethyl Acetate Pure", "141-78-6", "BASF", "ETH-ACT", "2024-02-14", "VERIFIED"),
+    ("SKU-112", "Acetonitrile LC-MS Grade", "75-05-8", "Sigma-Aldrich", "ACN-MS", "2024-03-10", "VERIFIED"),
+    ("SKU-113", "Hexanes Mixed Isomers", "110-54-3", "Fisher Scientific", "HEX-MIX", "2021-09-22", "OUTDATED"),
+    ("SKU-114", "Ammonium Hydroxide 28%", "1336-21-6", "McMaster-Carr", "NH4OH-28", "2023-10-05", "VERIFIED"),
+    ("SKU-115", "Hydrogen Peroxide 30%", "7722-84-1", "DuPont", "H2O2-30", "2024-01-18", "VERIFIED"),
+    ("SKU-116", "Formic Acid 98%", "64-18-6", "BASF", "FORM-98", "2020-03-11", "OUTDATED"),
+    ("SKU-117", "Acetic Acid Glacial", "64-19-7", "Dow Chemical", "ACE-GLAC", "2024-02-28", "VERIFIED"),
+    ("SKU-118", "Dimethyl Sulfoxide (DMSO)", "67-68-5", "Sigma-Aldrich", "DMSO-99", "2024-03-05", "VERIFIED"),
+    ("SKU-119", "Chloroform Reagent Grade", "67-66-3", "Fisher Scientific", "CHL-REAG", "2021-11-30", "OUTDATED"),
+    ("SKU-120", "Potassium Hydroxide Flakes", "1310-58-3", "McMaster-Carr", "KOH-FLK", "2023-08-19", "VERIFIED"),
+    ("SKU-121", "Sodium Hypochlorite 12.5%", "7681-52-9", "Chevron Phillips", "BLEACH-12", "2024-02-01", "VERIFIED"),
+    ("SKU-122", "Phosphoric Acid 85%", "7664-38-2", "Dow Chemical", "PHOS-85", "2020-07-25", "OUTDATED"),
+    ("SKU-123", "Cyclohexane 99%", "110-82-7", "BASF", "CYCLO-99", "2024-01-12", "VERIFIED"),
+    ("SKU-124", "Ethanol Denatured 95%", "64-17-5", "Sigma-Aldrich", "ETH-95", "2024-03-08", "VERIFIED"),
+    ("SKU-125", "Xylenes Mixed Isomers", "1330-20-7", "Fisher Scientific", "XYL-MIX", "2021-04-03", "OUTDATED"),
+    ("SKU-126", "Formaldehyde Solution 37%", "50-00-0", "McMaster-Carr", "FORMAL-37", "2019-11-15", "OUTDATED"),
+    ("SKU-127", "Sodium Carbonate Anhydrous", "497-19-8", "Dow Chemical", "NA2CO3", "2024-02-17", "VERIFIED"),
+    ("SKU-128", "Calcium Chloride Dihydrate", "10035-04-8", "BASF", "CACL2-DI", "2023-09-30", "VERIFIED"),
+    ("SKU-129", "Trichloroethylene (TCE)", "79-01-6", "DuPont", "TCE-100", "2020-10-10", "OUTDATED"),
+    ("SKU-130", "Perchloric Acid 70%", "7601-90-3", "Sigma-Aldrich", "PERCHL-70", "2024-01-22", "VERIFIED"),
+    ("SKU-131", "Boric Acid Powder", "10043-35-3", "Fisher Scientific", "BORIC-P", "2024-03-02", "VERIFIED"),
+    ("SKU-132", "Oxalic Acid Dihydrate", "6153-56-6", "McMaster-Carr", "OXALIC-DI", "2021-06-18", "OUTDATED"),
+    ("SKU-133", "Phenol Liquified 85%", "108-95-2", "Dow Chemical", "PHEN-85", "2023-12-14", "VERIFIED"),
+    ("SKU-134", "Pyridine Anhydrous", "110-86-1", "BASF", "PYR-ANH", "2024-02-09", "VERIFIED"),
+    ("SKU-135", "Petroleum Ether 40-60", "8032-32-4", "Chevron Phillips", "PET-ETH", "2020-12-05", "OUTDATED"),
+    ("SKU-136", "Diethylether Inhibited", "60-29-7", "Sigma-Aldrich", "ETHER-INH", "2024-03-11", "VERIFIED"),
+    ("SKU-137", "Triethylamine (TEA)", "121-44-8", "Fisher Scientific", "TEA-99", "2023-11-28", "VERIFIED"),
+    ("SKU-138", "Hydrofluoric Acid 48%", "7664-39-3", "McMaster-Carr", "HF-48", "2019-08-20", "OUTDATED"),
+    ("SKU-139", "Propylene Glycol Tech", "57-55-6", "Dow Chemical", "PROP-GLY", "2024-02-25", "VERIFIED"),
+    ("SKU-140", "Ethylene Glycol Pure", "107-21-1", "BASF", "ETH-GLY", "2024-01-19", "VERIFIED"),
+    ("SKU-141", "Sodium Bicarbonate", "144-55-8", "Sigma-Aldrich", "NAHCO3", "2024-03-04", "VERIFIED"),
+    ("SKU-142", "Magnesium Sulfate Anhydrous", "7487-88-9", "Fisher Scientific", "MGSO4", "2021-02-14", "OUTDATED"),
+    ("SKU-143", "Potassium Permanganate", "7722-64-7", "McMaster-Carr", "KMNO4", "2023-10-22", "VERIFIED"),
+    ("SKU-144", "Silver Nitrate 0.1M", "7761-88-8", "DuPont", "AGNO3-01", "2024-02-16", "VERIFIED"),
+    ("SKU-145", "Barium Chloride Dihydrate", "10326-27-9", "Dow Chemical", "BACL2", "2020-09-09", "OUTDATED"),
+    ("SKU-146", "Ammonium Sulfate Pure", "7783-20-2", "BASF", "NH42SO4", "2024-01-08", "VERIFIED"),
+    ("SKU-147", "Zinc Sulfate Heptahydrate", "7446-20-0", "Chevron Phillips", "ZNSO4", "2024-03-07", "VERIFIED"),
+    ("SKU-148", "Copper(II) Sulfate", "7758-98-7", "Sigma-Aldrich", "CUSO4", "2021-07-31", "OUTDATED"),
+    ("SKU-149", "Sodium Thiosulfate 0.1N", "7772-98-7", "Fisher Scientific", "NA2S2O3", "2023-12-20", "VERIFIED"),
+    ("SKU-150", "Iodine Resublimed", "7553-56-2", "McMaster-Carr", "I2-RESUB", "2024-02-22", "VERIFIED")
+]
+
+def generate_sample_csv():
+    logger.info(f"Generating 50-SKU enterprise chemical inventory CSV at {CSV_PATH}...")
+    with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["SKU", "Product_Name", "CAS_Number", "Supplier_Name", "Supplier_Product_ID", "Current_Revision_Date", "Expected_Status"])
+        for row in REALISTIC_CHEMICALS:
+            writer.writerow(row)
+    logger.info("✅ Enterprise CSV generated successfully!")
+
+def run_enterprise_bulk_audit_test():
+    generate_sample_csv()
+    db = DatabaseManager()
+    client_id = 1
+    
+    logger.info("Ingesting 50 Enterprise Chemical SKUs into SQLite Database Vault...")
+    for row in REALISTIC_CHEMICALS:
+        sku, prod, cas, supp, code, rev_date, exp_status = row
+        # Map outdated items to older revision dates in DB
+        db.add_sku(client_id, sku, prod, cas, supp, code)
+        # Update initial date
+        with db.get_connection() as conn:
+            conn.execute("UPDATE inventory_skus SET current_revision_date = ? WHERE sku = ?", (rev_date, sku))
+            conn.commit()
+
+    logger.info(f"✅ Ingested {len(REALISTIC_CHEMICALS)} SKUs into Database!")
+
+    print("\n=================================================================")
+    print("      🧪 CHEMSAFESYNC 50-SKU ENTERPRISE BULK AUDIT TEST         ")
+    print("=================================================================")
+    
+    start_time = time.time()
+    orchestrator = AsyncSDSComplianceOrchestrator(client_id=1, max_concurrency=15)
+    audit_res = orchestrator.run_async_audit_sync_wrapper(client_id=1) if hasattr(orchestrator, 'run_async_audit_sync_wrapper') else None
+    
+    # Run async audit
+    import asyncio
+    audit_res = asyncio.run(orchestrator.run_async_bulk_audit())
+    elapsed = time.time() - start_time
+
+    print(f"• Total Chemical SKUs Audited:  {audit_res.get('total_skus')}")
+    print(f"• Verified Up-To-Date SKUs:     {audit_res.get('verified_skus')} (🟢 Compliant)")
+    print(f"• Outdated SDS Revisions Found: {audit_res.get('outdated_skus')} (🔴 Requires Vendor Update)")
+    print(f"• OSHA Compliance Score:        {audit_res.get('compliance_score_pct')}%")
+    print(f"• Bulk Execution Time:          {elapsed:.3f} seconds ({len(REALISTIC_CHEMICALS)/elapsed:.1f} SKUs/sec)")
+    print(f"• Generated OSHA PDF Report:   {audit_res.get('report_file')}")
+    print("=================================================================\n")
+
+if __name__ == "__main__":
+    run_enterprise_bulk_audit_test()

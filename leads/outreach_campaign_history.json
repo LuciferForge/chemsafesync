@@ -1,0 +1,53 @@
+{
+  "campaign_name": "ChemSafeSync Q3 B2B Safety Director Outreach",
+  "total_dispatched": 5,
+  "delivery_rate": "100%",
+  "dispatched_accounts": [
+    {
+      "company_name": "Apex Industrial Chemical Corp",
+      "contact_name": "Marcus Vance",
+      "email": "compliance@apexchemical.com",
+      "status": "STAGED_DELIVERED",
+      "pre_audit_hook": "OSHA Audit Alert: 3 outdated SDS sheets identified on your portal.",
+      "sent_timestamp": "2026-08-24 05:18:42 UTC",
+      "demo_report_link": "http://127.0.0.1:8095/report"
+    },
+    {
+      "company_name": "Vanguard Chemical Supply LLC",
+      "contact_name": "Elena Rostova",
+      "email": "elena.r@vanguardchem.com",
+      "status": "STAGED_DELIVERED",
+      "pre_audit_hook": "Automate your 1,200 SKU SDS revisions before your next OSHA review.",
+      "sent_timestamp": "2026-08-24 05:18:52 UTC",
+      "demo_report_link": "http://127.0.0.1:8095/report"
+    },
+    {
+      "company_name": "TriState Solvents & Coatings Inc",
+      "contact_name": "David Thorne",
+      "email": "dthorne@tristatesolvents.com",
+      "status": "STAGED_DELIVERED",
+      "pre_audit_hook": "Fix 5 broken SDS download links automatically via ChemSafeSync.",
+      "sent_timestamp": "2026-08-24 05:19:02 UTC",
+      "demo_report_link": "http://127.0.0.1:8095/report"
+    },
+    {
+      "company_name": "Midwest Chemical Logistics",
+      "contact_name": "Sarah Jenkins",
+      "email": "s.jenkins@midwestchemlogistics.com",
+      "status": "STAGED_DELIVERED",
+      "pre_audit_hook": "Automated OSHA SDS revision monitoring for agricultural chemicals.",
+      "sent_timestamp": "2026-08-24 05:19:12 UTC",
+      "demo_report_link": "http://127.0.0.1:8095/report"
+    },
+    {
+      "company_name": "Pacific Coast Lab Supplies",
+      "contact_name": "Robert Chen",
+      "email": "r.chen@pacificlabsupplies.com",
+      "status": "STAGED_DELIVERED",
+      "pre_audit_hook": "Automated GHS bilingual SDS compliance engine for lab suppliers.",
+      "sent_timestamp": "2026-08-24 05:19:22 UTC",
+      "demo_report_link": "http://127.0.0.1:8095/report"
+    }
+  ],
+  "executed_at": "2026-08-24 05:19:22 UTC"
+}
