@@ -257,6 +257,7 @@ DASHBOARD_HTML = """
     }
   </script>
 
+  <script src="/static/protodex-companion-widget.js"></script>
 </body>
 </html>
 """
@@ -363,6 +364,11 @@ def download_report():
     rep_gen = ComplianceReportGenerator()
     path = rep_gen.generate_html_report(client, inventory, audit)
     return send_file(path)
+
+@app.route("/static/protodex-companion-widget.js")
+def protodex_widget():
+    with open("/Users/apple/Documents/products/protodex-ai-companions/protodex-companion-widget.js", "r") as f:
+        return f.read(), 200, {"Content-Type": "application/javascript"}
 
 if __name__ == "__main__":
     logger.info("⚡ Launching ChemSafeSync Web Dashboard on port 8095...")
