@@ -1,0 +1,402 @@
+[
+  {
+    "lead_id": "LEAD-001",
+    "company": "Summit Solvents & Coatings Inc #1",
+    "contact": "David Jones",
+    "email": "david.j@summitsolventscoat.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-002",
+    "company": "Pinnacle Industrial Chemicals Inc #2",
+    "contact": "Richard Davis",
+    "email": "richard.d@pinnacleindustrial.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-003",
+    "company": "Apex Lab Supplies Corp #3",
+    "contact": "Ashley Johnson",
+    "email": "ashley.j@apexlabsuppliescor.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-004",
+    "company": "Gulf Coast Petrochemical Solutions #4",
+    "contact": "Marcus Gonzalez",
+    "email": "marcus.g@gulfcoastpetrochem.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-005",
+    "company": "Gulf Coast Industrial Chemicals Inc #5",
+    "contact": "David Johnson",
+    "email": "david.j@gulfcoastindustria.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-006",
+    "company": "TriState Solvents & Coatings Inc #6",
+    "contact": "Stephanie Gonzalez",
+    "email": "stephanie.g@tristatesolventsco.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-007",
+    "company": "Benchmark Petrochemical Solutions #7",
+    "contact": "Elizabeth Jones",
+    "email": "elizabeth.j@benchmarkpetrochem.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-008",
+    "company": "Great Lakes Chemical Corp #8",
+    "contact": "Sarah Chen",
+    "email": "sarah.c@greatlakeschemical.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-009",
+    "company": "TriState Chemical Logistics LLC #9",
+    "contact": "Joseph Jenkins",
+    "email": "joseph.j@tristatechemicallo.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-010",
+    "company": "Crestview Chemical Corp #10",
+    "contact": "Elena Rostova",
+    "email": "elena.r@crestviewchemicalc.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-011",
+    "company": "Crestview Solvents & Coatings Inc #11",
+    "contact": "Christopher Martinez",
+    "email": "christopher.m@crestviewsolventsc.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-012",
+    "company": "TriState Industrial Chemicals Inc #12",
+    "contact": "David Miller",
+    "email": "david.m@tristateindustrial.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-013",
+    "company": "Summit Solvent Works LLC #13",
+    "contact": "Elizabeth Rostova",
+    "email": "elizabeth.r@summitsolventworks.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-014",
+    "company": "Gulf Coast Industrial Chemicals Inc #14",
+    "contact": "Matthew Patel",
+    "email": "matthew.p@gulfcoastindustria.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-015",
+    "company": "Summit Industrial Chemicals Inc #15",
+    "contact": "Matthew Garcia",
+    "email": "matthew.g@summitindustrialch.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-016",
+    "company": "Crestview Lab Supplies Corp #16",
+    "contact": "David Patel",
+    "email": "david.p@crestviewlabsuppli.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-017",
+    "company": "Gulf Coast Petrochemical Solutions #17",
+    "contact": "Richard Johnson",
+    "email": "richard.j@gulfcoastpetrochem.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-018",
+    "company": "Continental Solvent Works LLC #18",
+    "contact": "David Miller",
+    "email": "david.m@continentalsolvent.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-019",
+    "company": "Pinnacle Petrochemical Solutions #19",
+    "contact": "Joseph Miller",
+    "email": "joseph.m@pinnaclepetrochemi.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-020",
+    "company": "Summit Chemical Logistics LLC #20",
+    "contact": "Elizabeth Brown",
+    "email": "elizabeth.b@summitchemicallogi.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-021",
+    "company": "TriState Solvent Works LLC #21",
+    "contact": "Stephanie Hernandez",
+    "email": "stephanie.h@tristatesolventwor.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-022",
+    "company": "Apex Lab Supplies Corp #22",
+    "contact": "David Johnson",
+    "email": "david.j@apexlabsuppliescor.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-023",
+    "company": "Vanguard Solvents & Coatings Inc #23",
+    "contact": "Richard Jones",
+    "email": "richard.j@vanguardsolventsco.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-024",
+    "company": "Horizon Chemical Logistics LLC #24",
+    "contact": "Daniel Hernandez",
+    "email": "daniel.h@horizonchemicallog.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-025",
+    "company": "Continental Petrochemical Solutions #25",
+    "contact": "David Davis",
+    "email": "david.d@continentalpetroch.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-026",
+    "company": "Gulf Coast Solvent Works LLC #26",
+    "contact": "Elizabeth Davis",
+    "email": "elizabeth.d@gulfcoastsolventwo.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-027",
+    "company": "Horizon Solvents & Coatings Inc #27",
+    "contact": "Amanda Rostova",
+    "email": "amanda.r@horizonsolventscoa.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-028",
+    "company": "Midwest Industrial Chemicals Inc #28",
+    "contact": "Daniel Jones",
+    "email": "daniel.j@midwestindustrialc.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-029",
+    "company": "Great Lakes Lab Supplies Corp #29",
+    "contact": "Sarah Chen",
+    "email": "sarah.c@greatlakeslabsuppl.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-030",
+    "company": "Vanguard Solvents & Coatings Inc #30",
+    "contact": "Richard Davis",
+    "email": "richard.d@vanguardsolventsco.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-031",
+    "company": "Continental Chemical Logistics LLC #31",
+    "contact": "Daniel Hernandez",
+    "email": "daniel.h@continentalchemica.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-032",
+    "company": "Benchmark Chemical Logistics LLC #32",
+    "contact": "Elizabeth Hernandez",
+    "email": "elizabeth.h@benchmarkchemicall.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-033",
+    "company": "Midwest Chemical Logistics LLC #33",
+    "contact": "Amanda Gonzalez",
+    "email": "amanda.g@midwestchemicallog.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-034",
+    "company": "Vanguard Industrial Chemicals Inc #34",
+    "contact": "Marcus Johnson",
+    "email": "marcus.j@vanguardindustrial.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-035",
+    "company": "Great Lakes Lab Supplies Corp #35",
+    "contact": "Elizabeth Davis",
+    "email": "elizabeth.d@greatlakeslabsuppl.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-036",
+    "company": "Continental Petrochemical Solutions #36",
+    "contact": "Elizabeth Lopez",
+    "email": "elizabeth.l@continentalpetroch.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-037",
+    "company": "Continental Chemical Logistics LLC #37",
+    "contact": "Matthew Brown",
+    "email": "matthew.b@continentalchemica.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-038",
+    "company": "Vanguard Industrial Chemicals Inc #38",
+    "contact": "Christopher Patel",
+    "email": "christopher.p@vanguardindustrial.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-039",
+    "company": "TriState Solvent Works LLC #39",
+    "contact": "Marcus Davis",
+    "email": "marcus.d@tristatesolventwor.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-040",
+    "company": "Horizon Chemical Distribution Group #40",
+    "contact": "Jennifer Martinez",
+    "email": "jennifer.m@horizonchemicaldis.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-041",
+    "company": "Pinnacle Chemical Logistics LLC #41",
+    "contact": "Elizabeth Jenkins",
+    "email": "elizabeth.j@pinnaclechemicallo.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-042",
+    "company": "Vanguard Chemical Corp #42",
+    "contact": "Joseph Miller",
+    "email": "joseph.m@vanguardchemicalco.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-043",
+    "company": "Pinnacle Chemical Corp #43",
+    "contact": "Amanda Miller",
+    "email": "amanda.m@pinnaclechemicalco.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-044",
+    "company": "Horizon Lab Supplies Corp #44",
+    "contact": "Michael Hernandez",
+    "email": "michael.h@horizonlabsupplies.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-045",
+    "company": "Horizon Solvent Works LLC #45",
+    "contact": "Jessica Vance",
+    "email": "jessica.v@horizonsolventwork.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-046",
+    "company": "Benchmark Industrial Chemicals Inc #46",
+    "contact": "Sarah Jones",
+    "email": "sarah.j@benchmarkindustria.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-047",
+    "company": "TriState Lab Supplies Corp #47",
+    "contact": "Ashley Gonzalez",
+    "email": "ashley.g@tristatelabsupplie.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-048",
+    "company": "Vanguard Industrial Chemicals Inc #48",
+    "contact": "Jessica Miller",
+    "email": "jessica.m@vanguardindustrial.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-049",
+    "company": "Horizon Chemical Distribution Group #49",
+    "contact": "Elizabeth Jenkins",
+    "email": "elizabeth.j@horizonchemicaldis.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  },
+  {
+    "lead_id": "LEAD-050",
+    "company": "Apex Solvent Works LLC #50",
+    "contact": "Joseph Garcia",
+    "email": "joseph.g@apexsolventworksll.com",
+    "status": "DISPATCHED_TO_QUEUE",
+    "timestamp": "2026-08-30 10:01:49"
+  }
+]
